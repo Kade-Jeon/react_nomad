@@ -2,22 +2,23 @@
 <html lang="en">
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <body>
 <div id="root"></div>
 </body>
-<script>
+<script type="text/babel">
     const root = document.getElementById("root");
-    const H3 = React.createElement("h3", {
-        id: "sexy-span",
-        style: {color : "red"},
-        onMouseEnter: () => console.log("mouse is entered")
-        }, "This is span tag I made");
-    const Button = React.createElement("button", {
-        id: "btn",
-        onClick: () => console.log("clicked"),
-        style: {backgroundColor : "tomato"}
-    }, "click me");
-    const container = React.createElement("div", null, [H3, Button]);
+    const Title = (
+        <h3 id="title" onMouseEnter={
+        () => console.log("mouse entered")
+    }>This is title I made</h3>);
+
+    const Button = (
+        <button id="btn" style={{
+        backgroundColor: "tomato"
+    }} onClick={() => console.log("clicked")}>click me</button>);
+
+    const container = React.createElement("div", null, [Title, Button]);
     ReactDOM.render(container, root);
 </script>
 </html>
