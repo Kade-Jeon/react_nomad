@@ -7,18 +7,22 @@
 <div id="root"></div>
 </body>
 <script type="text/babel">
+    import {useState} from "react";
+
     const root = document.getElementById("root");
-    const Title = (
-        <h3 id="title" onMouseEnter={
-        () => console.log("mouse entered")
-    }>This is title I made</h3>);
 
-    const Button = (
-        <button id="btn" style={{
-        backgroundColor: "tomato"
-    }} onClick={() => console.log("clicked")}>click me</button>);
-
-    const container = React.createElement("div", null, [Title, Button]);
-    ReactDOM.render(container, root);
+    function App() {
+        var [counter, setCounter] = React.useState(0);
+        var countUp = () => {
+            setCounter((current) => current + 1);
+        };
+        return (
+            <div>
+                <h3>Total Clicks: {counter}</h3>
+                <button onClick={countUp}>click me</button>
+            </div>
+        );
+    }
+    ReactDOM.render(<App />, root);
 </script>
 </html>
